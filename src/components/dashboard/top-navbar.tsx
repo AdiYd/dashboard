@@ -5,7 +5,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { DashboardSidebar } from "./dashboard-sidebar";
+import { DashboardSidebar } from "@/components/dashboard/dashboard-sidebar";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export function TopNavbar() {
   return (
@@ -33,6 +34,7 @@ export function TopNavbar() {
         />
       </div>
       <div className="flex flex-1 items-center justify-end gap-4">
+        <ThemeToggle />
         <Button variant="outline" size="icon" className="rounded-full">
           <BellIcon className="h-4 w-4" />
           <span className="sr-only">Notifications</span>
