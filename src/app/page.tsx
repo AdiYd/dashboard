@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import type { z } from 'zod';
 import {
   Card,
@@ -27,6 +27,8 @@ type LoginFormValues = z.infer<typeof loginSchema>;
 
 export default function LoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const error = searchParams.get('error');
   const [isLoading, setIsLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -43,18 +45,29 @@ export default function LoginPage() {
     resolver: zodResolver(loginSchema),
   });
 
+  const getErrorMessage = (error: string) => {
+    switch (error) {
+      case 'CredentialsSignin':
+        return 'Invalid email or password';
+      default:
+        return 'An error occurred during sign in';
+    }
+  };
+
   async function onSubmit(data: LoginFormValues) {
     try {
       setIsLoading(true);
       const result = await signIn('credentials', {
         email: data.email,
         password: data.password,
+        rememberMe: data.rememberMe,
+        callbackUrl: '/home',
         redirect: false,
       });
 
       if (!result?.ok) {
         setError('root', {
-          message: 'Invalid email or password',
+          message: result?.error || 'Invalid email or password',
         });
         return;
       }
@@ -84,10 +97,20 @@ export default function LoginPage() {
           <CardDescription>Enter your email and password to access your account</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
+          {error && (
+            <div className="p-3 text-sm text-red-500 bg-red-50 dark:bg-red-900/10 rounded-md">
+              {getErrorMessage(error)}
+            </div>
+          )}
           <Button
             className="w-full"
             variant="outline"
-            onClick={() => signIn('google', { callbackUrl: '/home' })}
+            onClick={() =>
+              signIn('google', {
+                redirect: true,
+                callbackUrl: '/home',
+              })
+            }
           >
             <FcGoogle className="mr-2 h-4 w-4" />
             Continue with Google

@@ -21,6 +21,7 @@ import { PasswordInput } from '@/components/ui/password-input';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { signupSchema } from '@/lib/validations';
 import { FcGoogle } from 'react-icons/fc';
+import { Loader, LoaderIcon } from 'lucide-react';
 
 type SignupFormValues = z.infer<typeof signupSchema>;
 
@@ -67,7 +68,7 @@ export default function SignupPage() {
       <div className="absolute top-4 right-4">
         <ThemeToggle />
       </div>
-      <Card className="w-[400px] backdrop-blur-sm bg-white/75 dark:bg-gray-900/75">
+      <Card className="w-[500px] backdrop-blur-sm bg-white/75 dark:bg-zinc-900/75">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold">Create an account</CardTitle>
           <CardDescription>Enter your information to create your account</CardDescription>
@@ -141,9 +142,9 @@ export default function SignupPage() {
             </div>
             <div className="flex items-center space-x-2">
               <input
+                {...register('terms', { required: 'You must accept the terms and conditions' })}
                 type="checkbox"
                 id="terms"
-                required
                 className="rounded border-gray-300 text-primary focus:ring-primary"
                 aria-label="Accept terms and conditions"
               />
@@ -158,8 +159,20 @@ export default function SignupPage() {
                 </Link>
               </label>
             </div>
-            <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? 'Creating account...' : 'Create account'}
+            {errors.terms && <p className="text-sm text-red-500 mt-1">{errors.terms.message}</p>}
+            <Button
+              type="submit"
+              className="w-full"
+              disabled={isLoading || !!errors.terms || !!errors.root}
+            >
+              {isLoading ? (
+                <LoaderIcon
+                  style={{ animationDuration: '2s' }}
+                  className="mr-2 h-4 w-4 animate-spin"
+                />
+              ) : (
+                'Create account'
+              )}
             </Button>
             {errors.root && <p className="text-sm text-red-500 mt-1">{errors.root.message}</p>}
           </form>
