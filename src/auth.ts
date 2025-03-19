@@ -93,7 +93,7 @@ export const config = {
       }
       return session;
     },
-    async jwt({ token, user, account }) {
+    async jwt({ token, user }) {
       // When signing in
       if (user) {
         token.sub = user.id;
@@ -107,13 +107,13 @@ export const config = {
     redirect({ url, baseUrl }) {
       // Handle redirection after sign in
       if (url.startsWith('/')) {
-        return `${baseUrl}${url}`;
+        return `${url}`;
       } else if (new URL(url).origin === baseUrl) {
         return url;
       }
 
       // Default redirect to dashboard
-      return `${baseUrl}/home`;
+      return `/home`;
     },
   },
   session: {

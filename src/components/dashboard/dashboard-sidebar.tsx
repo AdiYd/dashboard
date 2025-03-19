@@ -41,9 +41,7 @@ export function DashboardSidebar({ collapsed = false }: { collapsed?: boolean })
   const handleLogout = async () => {
     // Handle logout logic here
 
-    await signOut();
-
-    console.log('User logged out');
+    await signOut({ redirectTo: '/' }); // Redirect to home page after logout
   };
 
   return (

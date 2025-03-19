@@ -1,7 +1,10 @@
+'use client';
+
 import { DashboardLayout } from '@/components/dashboard/dashboard-layout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { User, Users, UserPlus, UserMinus } from 'lucide-react';
+import { useSearchParams } from 'next/navigation';
 
 const customers = [
   { name: 'Alice Smith', email: 'alice@example.com', status: 'Active', joined: '2 days ago' },
@@ -11,15 +14,12 @@ const customers = [
   { name: 'Eve Davis', email: 'eve@example.com', status: 'Active', joined: '3 weeks ago' },
 ];
 
-export default function CustomersPage({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
-  const { collapsed } = searchParams;
+export default function CustomersPage() {
+  const searchParams = useSearchParams();
+  const collapsed = searchParams.get('collapsed') === 'true';
 
   return (
-    <DashboardLayout collapsed={collapsed === 'true'}>
+    <DashboardLayout collapsed={collapsed}>
       <div className="space-y-6">
         <h1 className="text-3xl font-bold">Customers</h1>
 

@@ -1,9 +1,11 @@
+'use client';
 
 import { DashboardLayout } from '@/components/dashboard/dashboard-layout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Search, BookOpen, MessageCircle, Mail, Phone, Video } from 'lucide-react';
+import { useSearchParams } from 'next/navigation';
 
 const helpTopics = [
   {
@@ -38,15 +40,12 @@ const helpTopics = [
   },
 ];
 
-export default function HelpPage({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
-  const { collapsed } = searchParams;
+export default function HelpPage() {
+  const searchParams = useSearchParams();
+  const collapsed = searchParams.get('collapsed') === 'true';
 
   return (
-    <DashboardLayout collapsed={collapsed === 'true'}>
+    <DashboardLayout collapsed={collapsed}>
       <div className="space-y-6">
         <h1 className="text-3xl font-bold">Help & Support</h1>
 

@@ -6,56 +6,54 @@ import { ThemeProvider } from '@/components/theme-provider';
 import './globals.css';
 import {
   Inter,
-  Roboto_Mono,
-  Playfair_Display,
-  Open_Sans,
-  Aladin,
-  Poppins,
-  Alef,
+  // Roboto_Mono,
+  // Playfair_Display,
+  // Open_Sans,
+  // Aladin,
+  // Poppins,
+  // Alef,
 } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
-const aladin = Aladin({
-  subsets: ['latin'],
-  variable: '--font-aladin',
-  display: 'swap',
-  weight: '400',
-  style: 'normal',
-  fallback: ['system-ui', 'sans-serif'],
-  preload: true,
-});
-const robotoMono = Roboto_Mono({
-  subsets: ['latin'],
-  variable: '--font-roboto-mono',
-});
-const playfairDisplay = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-playfair-display',
-});
-const openSans = Open_Sans({
-  subsets: ['latin'],
-  variable: '--font-open-sans',
-});
-
-const alef = Alef({
-  subsets: ['latin'],
-  variable: '--font-alef',
-  display: 'swap',
-  weight: ['400', '700'],
-  style: 'normal',
-  fallback: ['system-ui', 'sans-serif'],
-  preload: true,
-});
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  variable: '--font-poppins',
-  display: 'swap',
-  weight: '400',
-  style: 'normal',
-  fallback: ['system-ui', 'sans-serif'],
-  preload: true,
-});
+// const aladin = Aladin({
+//   subsets: ['latin'],
+//   variable: '--font-aladin',
+//   display: 'swap',
+//   weight: '400',
+//   style: 'normal',
+//   fallback: ['system-ui', 'sans-serif'],
+//   preload: true,
+// });
+// const robotoMono = Roboto_Mono({
+//   subsets: ['latin'],
+//   variable: '--font-roboto-mono',
+// });
+// const playfairDisplay = Playfair_Display({
+//   subsets: ['latin'],
+//   variable: '--font-playfair-display',
+// });
+// const openSans = Open_Sans({
+//   subsets: ['latin'],
+//   variable: '--font-open-sans',
+// });
+// const alef = Alef({
+//   subsets: ['latin'],
+//   variable: '--font-alef',
+//   display: 'swap',
+//   weight: ['400', '700'],
+//   style: 'normal',
+//   fallback: ['system-ui', 'sans-serif'],
+//   preload: true,
+// });
+// const poppins = Poppins({
+//   subsets: ['latin'],
+//   variable: '--font-poppins',
+//   display: 'swap',
+//   weight: '400',
+//   style: 'normal',
+//   fallback: ['system-ui', 'sans-serif'],
+//   preload: true,
+// });
 
 const seoData = {
   title: 'Webly - AI powered websites',

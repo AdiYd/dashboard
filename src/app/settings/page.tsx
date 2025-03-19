@@ -1,17 +1,17 @@
+'use client';
+
 import { DashboardLayout } from '@/components/dashboard/dashboard-layout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Settings2, Bell, Shield, Palette } from 'lucide-react';
+import { useSearchParams } from 'next/navigation';
 
-export default function SettingsPage({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
-  const { collapsed } = searchParams;
+export default function SettingsPage() {
+  const searchParams = useSearchParams();
+  const collapsed = searchParams.get('collapsed') === 'true';
   return (
-    <DashboardLayout collapsed={collapsed === 'true'}>
+    <DashboardLayout collapsed={collapsed}>
       <div className="space-y-6">
         <h1 className="text-3xl font-bold">Settings</h1>
 

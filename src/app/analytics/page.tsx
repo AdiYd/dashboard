@@ -1,15 +1,15 @@
+'use client';
+
 import { DashboardLayout } from '@/components/dashboard/dashboard-layout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { BarChart, LineChart, PieChart, Activity } from 'lucide-react';
+import { useSearchParams } from 'next/navigation';
 
-export default function AnalyticsPage({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
-  const { collapsed } = searchParams;
+export default function AnalyticsPage() {
+  const searchParams = useSearchParams();
+  const collapsed = searchParams.get('collapsed') === 'true';
   return (
-    <DashboardLayout collapsed={collapsed === 'true'}>
+    <DashboardLayout collapsed={collapsed}>
       <div className="space-y-6">
         <h1 className="text-3xl font-bold">Analytics Dashboard</h1>
 

@@ -1,3 +1,5 @@
+'use client';
+
 import { DashboardLayout } from '@/components/dashboard/dashboard-layout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -11,15 +13,13 @@ import {
   ArrowDownRight,
 } from 'lucide-react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 
-export default function HomePage({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
-  const { collapsed } = searchParams;
+export default function HomePage() {
+  const searchParams = useSearchParams();
+  const collapsed = searchParams.get('collapsed') === 'true';
   return (
-    <DashboardLayout collapsed={collapsed === 'true'}>
+    <DashboardLayout collapsed={collapsed}>
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <h1 className="text-3xl font-bold">Dashboard Overview</h1>

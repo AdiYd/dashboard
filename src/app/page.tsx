@@ -61,8 +61,8 @@ export default function LoginPage() {
         email: data.email,
         password: data.password,
         rememberMe: data.rememberMe,
-        callbackUrl: '/home',
-        redirect: false,
+        callbackUrl: '/',
+        redirectTo: '/home',
       });
 
       if (!result?.ok) {

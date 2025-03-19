@@ -1,7 +1,10 @@
+'use client';
+
 import { DashboardLayout } from '@/components/dashboard/dashboard-layout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { FileText, Download, File, FileCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useSearchParams } from 'next/navigation';
 
 const reports = [
   { name: 'Q4 2023 Financial Report', date: 'Dec 31, 2023', type: 'PDF', size: '2.3 MB' },
@@ -11,15 +14,12 @@ const reports = [
   { name: 'Website Traffic Analysis', date: 'Feb 5, 2024', type: 'PDF', size: '3.4 MB' },
 ];
 
-export default function ReportsPage({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
-  const { collapsed } = searchParams;
+export default function ReportsPage() {
+  const searchParams = useSearchParams();
+  const collapsed = searchParams.get('collapsed') === 'true';
 
   return (
-    <DashboardLayout collapsed={collapsed === 'true'}>
+    <DashboardLayout collapsed={collapsed}>
       <div className="space-y-6">
         <h1 className="text-3xl font-bold">Reports</h1>
 
