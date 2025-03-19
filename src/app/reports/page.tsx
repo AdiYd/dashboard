@@ -17,6 +17,7 @@ export default function ReportsPage({
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
   const { collapsed } = searchParams;
+
   return (
     <DashboardLayout collapsed={collapsed === 'true'}>
       <div className="space-y-6">

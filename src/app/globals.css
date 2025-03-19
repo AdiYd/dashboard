@@ -118,10 +118,15 @@
     @apply border-border outline-ring/50;
   }
   body {
+    font-family: 'Poppins', sans-serif;
     @apply bg-background text-foreground max-w-screen overflow-x-hidden;
   }
 
   button {
     @apply cursor-pointer;
+  }
+
+  #sidebar {
+    height: -webkit-fill-available;
   }
 }

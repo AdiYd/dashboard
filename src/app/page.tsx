@@ -87,7 +87,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen w-full py-12 flex items-center justify-center bg-gradient-to-br from-blue-200 to-violet-300 dark:from-gray-950 dark:to-slate-800">
+    <div className="min-h-screen w-full py-12 flex items-center justify-center bg-gradient-to-br from-blue-100 to-violet-200 dark:from-gray-950 dark:to-slate-800">
       <div className="absolute top-4 right-4">
         <ThemeToggle />
       </div>

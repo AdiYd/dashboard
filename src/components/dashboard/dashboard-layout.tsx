@@ -38,7 +38,7 @@ export function DashboardLayout({
     <div className="relative flex min-h-screen flex-col bg-background">
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-[-10vh] right-[-20vw] w-1/2 h-1/2 rounded-full bg-gradient-to-r from-emerald-500/50 to-violet-500/50 blur-[100px]" />
-        <div className="absolute bottom-0 left-[-10vw] w-1/2 h-1/4 rounded-full bg-gradient-to-r from-violet-300/50 to-amber-500/50 blur-[100px]" />
+        <div className="absolute bottom-0 left-[-10vw] w-1/2 h-1/4 rounded-full bg-gradient-to-r from-amber-300/50 to-pink-400/50 blur-[100px]" />
       </div>
 
       <TopNavbar />

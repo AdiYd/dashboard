@@ -4,9 +4,26 @@ import { auth } from '@/auth';
 import { SessionProvider } from 'next-auth/react';
 import { ThemeProvider } from '@/components/theme-provider';
 import './globals.css';
-import { Inter, Roboto_Mono, Playfair_Display, Open_Sans } from 'next/font/google';
+import {
+  Inter,
+  Roboto_Mono,
+  Playfair_Display,
+  Open_Sans,
+  Aladin,
+  Poppins,
+  Alef,
+} from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
+const aladin = Aladin({
+  subsets: ['latin'],
+  variable: '--font-aladin',
+  display: 'swap',
+  weight: '400',
+  style: 'normal',
+  fallback: ['system-ui', 'sans-serif'],
+  preload: true,
+});
 const robotoMono = Roboto_Mono({
   subsets: ['latin'],
   variable: '--font-roboto-mono',
@@ -18,6 +35,26 @@ const playfairDisplay = Playfair_Display({
 const openSans = Open_Sans({
   subsets: ['latin'],
   variable: '--font-open-sans',
+});
+
+const alef = Alef({
+  subsets: ['latin'],
+  variable: '--font-alef',
+  display: 'swap',
+  weight: ['400', '700'],
+  style: 'normal',
+  fallback: ['system-ui', 'sans-serif'],
+  preload: true,
+});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  variable: '--font-poppins',
+  display: 'swap',
+  weight: '400',
+  style: 'normal',
+  fallback: ['system-ui', 'sans-serif'],
+  preload: true,
 });
 
 const seoData = {
@@ -52,7 +89,7 @@ export default async function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} font-sans`}>
         <SessionProvider session={session}>
           <ThemeProvider
             attribute="class"

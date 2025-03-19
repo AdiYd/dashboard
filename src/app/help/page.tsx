@@ -1,3 +1,4 @@
+
 import { DashboardLayout } from '@/components/dashboard/dashboard-layout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -43,6 +44,7 @@ export default function HelpPage({
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
   const { collapsed } = searchParams;
+
   return (
     <DashboardLayout collapsed={collapsed === 'true'}>
       <div className="space-y-6">

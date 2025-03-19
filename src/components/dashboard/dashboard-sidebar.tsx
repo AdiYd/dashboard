@@ -51,17 +51,21 @@ export function DashboardSidebar({ collapsed = false }: { collapsed?: boolean })
       className={`contents md:!flex flex-col bg-accent/50 border-r z-40 gap-4 transition-all duration-300 ${isCollapsed ? 'w-17' : 'w-64'}`}
     >
       <div
+        id="sidebar"
         className={`fixed flex flex-col gap-4 transition-all duration-300 ${isCollapsed ? 'w-17' : 'w-64'} `}
       >
         <div
           onClick={changeCollapseState}
-          className="flex h-14 items-center justify-between border-b px-4 md:h-16"
+          className={`flex h-14 items-center ${!isCollapsed ? 'justify-between' : 'justify-center'} gap-2 border-b px-4 md:h-16`}
         >
-          <Link href="/home" className="flex items-center gap-2 font-semibold">
-            <LayoutDashboard className="h-6 w-6" />
+          <div className="flex cursor-pointer items-center gap-2 font-semibold">
+            <LayoutDashboard
+              // style={{ animationDuration: '2s' }}
+              className={`h-6 w-6 ${isCollapsed ? 'rotate-180' : ''} transition-transform duration-750`}
+            />
             {!isCollapsed && <span>Dashboard</span>}
-          </Link>
-          {!isMobile && (
+          </div>
+          {!isMobile && !isCollapsed && (
             <Button variant="ghost" size="icon" className="h-8 w-8 cursor-pointer">
               <PanelLeftIcon
                 className={`h-4 w-4 transition-transform ${isCollapsed ? 'rotate-180' : ''}`}
@@ -76,7 +80,10 @@ export function DashboardSidebar({ collapsed = false }: { collapsed?: boolean })
                 <TooltipTrigger asChild>
                   <Link
                     href={
-                      item.href + `?${new URLSearchParams({ collapsed: isCollapsed.toString() })}`
+                      item.href +
+                      (isCollapsed
+                        ? `?${new URLSearchParams({ collapsed: isCollapsed.toString() })}`
+                        : '')
                     }
                     className={`flex ${!isCollapsed ? '' : 'justify-center'} items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all hover:text-primary ${
                       pathname === item.href ? 'bg-muted text-primary' : 'text-muted-foreground'
