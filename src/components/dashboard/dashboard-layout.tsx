@@ -16,6 +16,7 @@ export function DashboardLayout({
   const router = useRouter();
   const { data: session, status } = useSession();
 
+
   useEffect(() => {
     if (status !== 'loading' && !session) {
       router.push('/');

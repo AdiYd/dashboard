@@ -1,172 +1,145 @@
-#
+# Dashboard Template
 
-A modern, responsive dashboard template built with Next.js, Tailwind CSS, Firebase, and Shadcn UI.
+<div align="center">
+  
+![Next.js](https://img.shields.io/badge/Next.js-15.2.3-black?style=for-the-badge&logo=next.js)
+![React](https://img.shields.io/badge/React-19.0.0-blue?style=for-the-badge&logo=react)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript)
 
-## Overview
+A modern, responsive dashboard template with authentication and dark mode
+  
+</div>
 
-This template provides a quick start for building professional dashboard applications with authentication, theming, and a solid architectural foundation.
+## ✨ Features
 
-### Features
+- 🔐 **Authentication** - NextAuth integration with Google OAuth
+- 🎨 **Theming** - Light/Dark mode support
+- 📱 **Responsive Design** - Optimized for all device sizes
+- 🧩 **Modular Components** - Built with Shadcn UI
+- ⚡ **Fast Performance** - Built on Next.js with App Router
+- 🛠️ **TypeScript** - Type-safe development experience
 
-- 🔐 Authentication with Firebase
-- 🎨 Multiple theme support
-- 📱 Responsive design
-- 🧩 Modular component architecture
-- ⚡ Fast performance with Next.js
-- 🛠️ Built with Typescript
-- 🎯 Shadcn UI components
-- 🔥 Firebase integration
+## 📸 Screenshots
+ - Light theme
+<div align="center">
+  <img src="./src/assets/image/dash1.png" width="40%" alt="Dashboard Home" />
+  <img src="./src/assets/image/dash2.png" width="40%" alt="Analytics Page" />
+  <img src="./src/assets/image/dash4.png" width="40%" alt="Analytics Page" />
+  <img src="./src/assets/image/dash5.png" width="40%" alt="Analytics Page" />
+</div>
 
-## Getting Started
+- Dark theme
+<div align="center">
+  <img src="./src/assets/image/dash2_dark.png" width="45%" alt="Dashboard Home" />
+  <img src="./src/assets/image/dash3_dark.png" width="45%" alt="Analytics Page" />
+  <img src="./src/assets/image/dash5_dark.png" width="45%" alt="Analytics Page" />
+  <img src="./src/assets/image/dash6_dark.png" width="30%" alt="Analytics Page" />
+</div>
+
+## 🚀 Pages
+
+- **Authentication**
+  - Login
+  - Sign up
+  
+- **Dashboard**
+  - Home - Overview of key metrics
+  - Analytics - Detailed data visualizations
+  - Customers - Customer management interface
+  - Reports - Generated reports and downloads
+  - Settings - User and application settings
+  - Help - Support and documentation
+
+## 💻 Tech Stack
+
+- **Framework:** [Next.js 15](https://nextjs.org/)
+- **UI Library:** [React 19](https://react.dev/)
+- **Styling:** [Tailwind CSS 4](https://tailwindcss.com/)
+- **Components:** [Shadcn UI](https://ui.shadcn.com/)
+- **Authentication:** [NextAuth.js 5](https://next-auth.js.org/)
+- **Form Handling:** [React Hook Form](https://react-hook-form.com/)
+- **Validation:** [Zod](https://zod.dev/)
+- **Icons:** [Lucide React](https://lucide.dev/), [React Icons](https://react-icons.github.io/react-icons/)
+
+## 🛠️ Getting Started
+
+### Prerequisites
+
+- Node.js 18.17 or later
+- npm or yarn
+
+### Installation
 
 1. Clone the repository
+
 ```bash
 git clone https://github.com/yourusername/dashboard.git
+cd dashboard
 ```
 
 2. Install dependencies
+
 ```bash
 npm install
+# or
+yarn install
 ```
 
-3. Configure Firebase
-- Create a Firebase project
-- Copy your Firebase config to `.env.local`
+3. Create a `.env.local` file in the root directory with your NextAuth configuration
 
-4. Run the development server
+```
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your-secret-key
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+```
+
+4. Start the development server
+
 ```bash
 npm run dev
+# or
+yarn dev
 ```
 
-## Project Structure
+## 📁 Project Structure
 
 ```
-├── app/
-│   ├── api/
-|   |   |── auth/
-│   |   |── pages/
-│   └── layout.tsx
-├── components/
-|   |── dashboard/
-|── context/
-├── lib/
-├── styles/
-└── types/
+dashboard/
+├── public/
+├── src/
+│   ├── app/
+│   │   ├── analytics/
+│   │   ├── api/auth/[...nextauth]/
+│   │   ├── customers/
+│   │   ├── help/
+│   │   ├── home/
+│   │   ├── reports/
+│   │   ├── settings/
+│   │   ├── signup/
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   ├── not-found.tsx
+│   │   └── page.tsx (Login)
+│   ├── assets/
+│   ├── auth/
+│   ├── components/
+│   │   ├── dashboard/
+│   │   ├── ui/
+│   │   └── theme-toggle.tsx
+│   └── lib/
+├── .env.local
+├── next.config.js
+├── package.json
+└── tsconfig.json
 ```
 
-## Tech Stack
+## 📄 License
 
-- Next.js 13+
-- Tailwind CSS
-- Firebase
-- Shadcn UI
-- TypeScript
+This project is licensed under the MIT License.
 
-## Features
+## 🙏 Acknowledgements
 
-### Authentication
-- Sign in/Sign up
-- Password reset
-- Protected routes
-
-### Dashboard
-- Analytics overview
-- User management
-- Settings panel
-- Profile management
-
-### Theming
-- Light/Dark mode
-- Customizable color schemes
-- Consistent design system
-
-## Contributing
-
-Contributions are welcome! Please read our contributing guidelines before submitting PRs.
-
-## License
-
-MIT License - feel free to use this template for your projects.
-
-## Over
-git clone https://github.com/yourusername/dashboard.git
-
-
-## Project Structure
-
-├── app/
-
-- Next.js 13+
-- Tailwind
-- Shadcn UI
-- TypeScript
-
-## Features
-
-### Authenticatio
-- Password reset
-- Protected routes
-
-### Dashboard
-- User management
-- Settings panel
-- Profile management
-
-- Light/Dark mode
-- Customizable color schemes
-- Consistent design system
-
-
-Contributions are welcome! Please read our contributing guidelines before submitting PRs.
-
-
-MIT License - feel free to use this template for your projects.## License
-
-## Contributing
-### Theming
-- Analytics overviewn
-- Sign in/Sign up CSS
-- Firebase│   ├── auth/
-│   ├── dashboard/
-│   └── layout.tsx
-├── components/
-├── lib/
-├── styles/
-└── types/
-```
-
-
-## Tech Stack
-```2. Install dependencies
-```bash
-npm install
-```
-
-3. Configure Firebase
-- Copy your Firebase config to `.env.local`
-
-4. Run the development server
-```bash
-```
-
-npm run dev
-- Create a Firebase project```
-view Next.js
-
-- ⚡ Fast performance with Next.js
-- 🛠️ Built with Typescript
-- 🎯 Shadcn UI components
-- 🔥 Firebase integration
-
-## Getting Started
-
-1. Clone the repository
-```bash
-This template provides a quick start for building professional dashboard applications with authentication, theming, and a solid architectural foundation.
-
-### Features
-
-- 🔐 Authentication with Firebase
-- 🎨 Multiple theme support
-- 📱 Responsive design
-- 🧩 Modular component architecture Dashboard Template
+- [Shadcn UI](https://ui.shadcn.com/) for the beautiful component library
+- [Next.js Team](https://nextjs.org/) for the amazing framework

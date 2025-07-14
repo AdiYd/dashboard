@@ -11,6 +11,7 @@ declare module 'next-auth' {
       id: string;
       email: string;
       name: string;
+      image?: string;
       rememberMe?: boolean;
     };
   }
@@ -45,7 +46,8 @@ export const config = {
           return {
             id: '1',
             email: 'test@example.com',
-            name: 'Test User',
+            name: 'John Doe',
+            image: 'https://picsum.photos/100/100',
             rememberMe,
           };
         }
@@ -89,11 +91,18 @@ export const config = {
         session.user.id = token.sub || '';
         session.user.email = (token.email as string) || session.user.email;
         session.user.name = (token.name as string) || session.user.name;
+        session.user.image = (token.picture as string) || session.user.image;
         session.user.rememberMe = (token.rememberMe as boolean) || false;
       }
       return session;
     },
-    async jwt({ token, user }) {
+    async jwt({ token, account, profile, user }) {
+      if (account && profile) {
+        // When signing in with Google
+        token.email = profile.email;
+        token.name = profile.name;
+        token.picture = profile.picture || token.picture;
+      }
       // When signing in
       if (user) {
         token.sub = user.id;
@@ -118,7 +127,7 @@ export const config = {
   },
   session: {
     strategy: 'jwt',
-    maxAge: 30 * 24 * 60 * 60, // 30 days by default
+    maxAge: 2 * 24 * 60 * 60, // 2 days by default
   },
 } satisfies NextAuthConfig;
 

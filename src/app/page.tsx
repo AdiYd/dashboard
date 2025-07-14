@@ -73,7 +73,7 @@ export default function LoginPage() {
       }
 
       router.push('/home');
-    } catch (error) {
+    } catch {
       setError('root', {
         message: 'Something went wrong. Please try again.',
       });
@@ -91,8 +91,8 @@ export default function LoginPage() {
       <div className="absolute top-4 right-4">
         <ThemeToggle />
       </div>
-      <Card className="w-[450px] backdrop-blur-sm bg-white/75 dark:bg-zinc-900/75">
-        <CardHeader className="space-y-1">
+      <Card className="w-[450px] space-y-4 backdrop-blur-sm bg-white/100 dark:bg-zinc-900/75">
+        <CardHeader className="space-y-1 text-center">
           <CardTitle className="text-2xl font-bold">Sign in</CardTitle>
           <CardDescription>Enter your email and password to access your account</CardDescription>
         </CardHeader>
@@ -105,12 +105,19 @@ export default function LoginPage() {
           <Button
             className="w-full"
             variant="outline"
-            onClick={() =>
-              signIn('google', {
+            onClick={async () => {
+              const response = await signIn('google', {
                 redirect: true,
-                callbackUrl: '/home',
-              })
-            }
+                redirectTo: '/home',
+              });
+              if (response?.ok) {
+                // router.push('/home');
+              } else {
+                setError('root', {
+                  message: 'Google sign in failed. Please try again.',
+                });
+              }
+            }}
           >
             <FcGoogle className="mr-2 h-4 w-4" />
             Continue with Google
@@ -120,7 +127,7 @@ export default function LoginPage() {
               <span className="w-full border-t" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white dark:bg-gray-900 px-2 text-muted-foreground">
+              <span className="bg-white/10 dark:bg-gray-900/10 rounded-full border-foreground/10 border-[0.8px] backdrop-blur-3xl px-2 text-muted-foreground">
                 Or continue with
               </span>
             </div>
@@ -172,7 +179,7 @@ export default function LoginPage() {
             </Button>
           </form>
         </CardContent>
-        <CardFooter className="flex flex-wrap items-center justify-between gap-2">
+        <CardFooter className="flex flex-wrap flex-col items-center justify-between gap-2">
           <div className="text-sm text-muted-foreground">
             Don't have an account?{' '}
             <Link href="/signup" className="text-primary hover:underline">

@@ -21,7 +21,7 @@ import { PasswordInput } from '@/components/ui/password-input';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { signupSchema } from '@/lib/validations';
 import { FcGoogle } from 'react-icons/fc';
-import { Loader, LoaderIcon } from 'lucide-react';
+import { LoaderIcon } from 'lucide-react';
 
 type SignupFormValues = z.infer<typeof signupSchema>;
 
@@ -68,8 +68,8 @@ export default function SignupPage() {
       <div className="absolute top-4 right-4">
         <ThemeToggle />
       </div>
-      <Card className="w-[500px] backdrop-blur-sm bg-white/75 dark:bg-zinc-900/75">
-        <CardHeader className="space-y-1">
+      <Card className="w-[500px] space-y-4 backdrop-blur-sm bg-white/100 dark:bg-zinc-900/75">
+        <CardHeader className="space-y-1 text-center">
           <CardTitle className="text-2xl font-bold">Create an account</CardTitle>
           <CardDescription>Enter your information to create your account</CardDescription>
         </CardHeader>
@@ -87,7 +87,7 @@ export default function SignupPage() {
               <span className="w-full border-t" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white dark:bg-gray-900 px-2 text-muted-foreground">
+              <span className="bg-white/10 dark:bg-gray-900/10 rounded-full backdrop-blur-3xl border-foreground/10 border-[0.8px] px-2 text-muted-foreground">
                 Or continue with
               </span>
             </div>
@@ -177,8 +177,8 @@ export default function SignupPage() {
             {errors.root && <p className="text-sm text-red-500 mt-1">{errors.root.message}</p>}
           </form>
         </CardContent>
-        <CardFooter>
-          <div className="text-sm text-muted-foreground">
+        <CardFooter className="justify-center">
+          <div className="text-sm text-center text-muted-foreground">
             Already have an account?{' '}
             <Link href="/" className="text-primary hover:underline">
               Sign in

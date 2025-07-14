@@ -18,6 +18,7 @@ import { useSearchParams } from 'next/navigation';
 export default function HomePage() {
   const searchParams = useSearchParams();
   const collapsed = searchParams.get('collapsed') === 'true';
+
   return (
     <DashboardLayout collapsed={collapsed}>
       <div className="space-y-6">
