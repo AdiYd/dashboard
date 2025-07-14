@@ -74,7 +74,7 @@ A modern, responsive dashboard template with authentication and dark mode
 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/dashboard.git
+git clone https://github.com/AdiYd/dashboard.git
 cd dashboard
 ```
 
@@ -135,9 +135,6 @@ dashboard/
 └── tsconfig.json
 ```
 
-## 📄 License
-
-This project is licensed under the MIT License.
 
 ## 🙏 Acknowledgements
 
